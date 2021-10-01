@@ -12,7 +12,7 @@
         <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="XO_game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameViewController" id="BYZ-38-t0r" customClass="GameViewController" customModule="XO_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,9 +47,21 @@
                                             <constraint firstAttribute="width" secondItem="FpC-lq-59T" secondAttribute="height" id="j79-XI-cai"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNT-N2-12v">
+                                        <rect key="frame" x="154" y="438" width="67" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Menu"/>
+                                        <connections>
+                                            <action selector="restartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u7F-cA-LaM"/>
+                                            <action selector="showStartMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gNI-Jj-llw"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="VNT-N2-12v" secondAttribute="trailing" constant="154" id="1RB-AU-E9i"/>
+                                    <constraint firstAttribute="bottom" secondItem="VNT-N2-12v" secondAttribute="bottom" constant="16" id="41s-hK-E8y"/>
+                                    <constraint firstItem="VNT-N2-12v" firstAttribute="leading" secondItem="LYG-3D-cJV" secondAttribute="leading" constant="154" id="B5P-H4-43b"/>
                                     <constraint firstAttribute="trailing" secondItem="FpC-lq-59T" secondAttribute="trailing" constant="16" id="qTA-6g-kBz"/>
                                     <constraint firstItem="FpC-lq-59T" firstAttribute="centerY" secondItem="LYG-3D-cJV" secondAttribute="centerY" id="rtG-DT-ZNh"/>
                                     <constraint firstItem="FpC-lq-59T" firstAttribute="leading" secondItem="LYG-3D-cJV" secondAttribute="leading" constant="16" id="yDG-za-FiU"/>
@@ -92,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Start View Controller-->
         <scene sceneID="lN5-w6-k96">
             <objects>
-                <viewController id="YBp-ug-KoU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="startViewController" id="YBp-ug-KoU" customClass="StartViewController" customModule="XO_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3rr-GQ-3NV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,11 +116,17 @@
                                 <rect key="frame" x="100" y="226" width="175" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="2 игрока"/>
+                                <connections>
+                                    <action selector="gameType:" destination="YBp-ug-KoU" eventType="touchUpInside" id="LZU-1p-lPm"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXR-5o-lcn">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXR-5o-lcn">
                                 <rect key="frame" x="100" y="347" width="175" height="70"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Компьютер"/>
+                                <connections>
+                                    <action selector="gameType:" destination="YBp-ug-KoU" eventType="touchUpInside" id="13n-WZ-jCR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VhL-La-eHF"/>

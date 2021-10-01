@@ -9,7 +9,9 @@
 import Foundation
 
 class LogReceiver {
+    
     func sendMessageToServerLog(message: String) {
         print(message)
     }
+    
 }

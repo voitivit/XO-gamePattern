@@ -9,7 +9,6 @@
 import UIKit
 
 public class MarkView: UIView, Copying {
-    // MARK: - Properties
     
     public var lineColor: UIColor = .black
     public var lineWidth: CGFloat = 7
@@ -50,28 +49,24 @@ public class MarkView: UIView, Copying {
         
         return label
     }()
-    
-    // MARK: - Init
-    
+        
     public init() {
         super.init(frame: CGRect(origin: .zero,
                                  size: CGSize(width: 90, height: 90)))
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     required init(_ prototype: MarkView) {
         super.init(frame: prototype.frame)
         
         self.lineColor = prototype.lineColor
-        lineWidth = prototype.lineWidth
-        textColor = prototype.textColor
+        self.lineWidth = prototype.lineWidth
+        self.textColor = prototype.textColor
     }
     
-    // MARK: - UIView
-    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+        
     public final override func layoutSubviews() {
         super.layoutSubviews()
         updateLabel()
@@ -90,9 +85,7 @@ public class MarkView: UIView, Copying {
             layoutIfNeeded()
         }
     }
-    
-    // MARK: - Methods
-    
+        
     public func animateIn(duration: TimeInterval = 0.5,
                           completion: @escaping () -> Void) {
         CATransaction.begin()
@@ -117,16 +110,12 @@ public class MarkView: UIView, Copying {
         shapeLayer.add(animation, forKey: nil)
         CATransaction.commit()
     }
-    
-    // MARK: - UI
-    
+        
     private final func updateLabel() {
         let size = 0.1 * bounds.height
         label.font = UIFont.systemFont(ofSize: size, weight: .thin)
     }
-    
-    // MARK: - Template methods
-    
+        
     internal func updateShapeLayer() {
         // meant for subclasses to override
     }

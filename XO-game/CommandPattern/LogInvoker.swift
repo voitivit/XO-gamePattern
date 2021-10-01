@@ -9,6 +9,7 @@
 import Foundation
 
 class LogInvoker {
+    
     public static let shared = LogInvoker()
     
     private let receiver = LogReceiver()
@@ -29,4 +30,5 @@ class LogInvoker {
         commands.forEach { receiver.sendMessageToServerLog(message: $0.logMessage) }
         commands = []
     }
+    
 }
