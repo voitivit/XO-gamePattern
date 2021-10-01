@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 public enum LogAction {
     case playerSetMark(player: Player, position: GameboardPosition)
     case gameFinished(winner: Player?)

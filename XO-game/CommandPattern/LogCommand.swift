@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
 class LogCommand {
+    
     let action: LogAction
     
     init(action: LogAction) {
@@ -21,12 +21,13 @@ class LogCommand {
             return "\(player) placed mark at \(position)"
         case .gameFinished(let winner):
             if let winner = winner {
-                return "\(winner) won the game"
+                return "\(winner) won game"
             } else {
-                return "Game is drawn"
+                return "Is draw"
             }
         case .restartGame:
             return "Game restarted"
         }
     }
+    
 }

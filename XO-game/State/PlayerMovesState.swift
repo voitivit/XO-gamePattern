@@ -1,15 +1,15 @@
 //
-//  PlayerState.swift
+//  PlayerMovesState.swift
 //  XO-game
 //
-//  Created by Veaceslav Chirita on 27.09.2021.
+//  Created by emil kurbanov on 01.10.2021.
 //  Copyright © 2021 plasmon. All rights reserved.
 //
 
-import UIKit
-
-class PlayerState: GameState {
+import Foundation
+class PlayerMovesState: GameState {
     var isMoveCompleted: Bool = false
+    private var moveCounter: Int = 0
     
     public let player: Player
     private weak var gameViewController: GameViewController?
@@ -43,12 +43,20 @@ class PlayerState: GameState {
     func addMark(at position: GameboardPosition) {
         Log(action: .playerSetMark(player: player, position: position))
         
-        guard let gameBoardView = gameBoardView, gameBoardView.canPlaceMarkView(at: position) else {
+        guard let gameBoard = gameBoard, let gameBoardView = gameBoardView, gameBoardView.canPlaceMarkView(at: position) else {
             return
         }
 
-        gameBoard?.setPlayer(player, at: position)
+        gameBoard.setPlayer(player, at: position)
         gameBoardView.placeMarkView(markViewPrototype.copy(), at: position)
-        isMoveCompleted = true
+        
+        PlayerInvoker.shared.addPlayerCommand(command: PlayerCommand(player: player, gameBoardPosition: position, gameBoardView: gameBoardView, gameBoard: gameBoard))
+        
+        moveCounter += 1
+        
+        if(moveCounter >= 5) {
+            isMoveCompleted = true
+        }
+        
     }
 }

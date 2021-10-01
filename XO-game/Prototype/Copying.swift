@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol Copying {
+protocol Copying: AnyObject {
     init(_ prototype: Self)
 }
 
-extension Copying {
+extension Copying where Self: AnyObject {
     func copy() -> Self {
         return type(of: self).init(self)
     }
